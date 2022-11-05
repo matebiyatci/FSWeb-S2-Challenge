@@ -75,16 +75,20 @@ function cumleKur(birinci, ikinci="", ucuncu="", dorduncu="", besinci=""){
 
 /* (Oto test yok) cumleKur fonksiyonuna yalnızca 1 parametre göndererek "Hello World!" stringini elde edin, sonucu konsolde gözlemleyin */
 
+cumleKur("Hello World!");
 
 
 
 /* (Oto test yok) cumleKur fonksiyonuna yalnızca 2 parametre göndererek "Hello World!" stringini elde edin, sonucu konsolde gözlemleyin */
 
 
+(cumleKur("Hello", " World!"));
 
 
 /* (Oto test var) cumleKur fonksiyonuna 5 parametre göndererek "Ben iyi bir yazılımcı olacağım!" stringini elde edin, sonucu `bircumle` değişkenine atayın ve konsolde gözlemleyin */
 var bircumle;
+bircumle = cumleKur("Ben", " iyi", " bir", " yazılımcı", " olacağım!");
+
 
 /* kodlar buraya */
 
@@ -103,12 +107,14 @@ var bircumle;
 			6. Oluşturulan yeni dizi döndürülecek.
 	*/
 	
-
-function cumlelereDonustur(/* kodlar buraya */ ){
-	/* kodlar buraya */
+let ayrac;
+function cumlelereDonustur(cumleler, ayrac = ","){
+	let newString = [];
+	for (let i = 0; i < cumleler.length ; i++) {
+		newString.push(cumleler[i].join(ayrac));
+	}
+	return newString;
 }
-
-
 
 /* GÖREV 2:
 		paragrafOlustur fonksiyonuna aşağıdakileri uygulayın.
@@ -120,62 +126,104 @@ function cumlelereDonustur(/* kodlar buraya */ ){
 			6. Oluşturulan paragraf döndürülecek
 	*/
 	
-function paragrafOlustur(/* kodlar buraya */ ){
-	/* kodlar buraya */ 
+function paragrafOlustur(cumleler, cumleKur, cumlelereDonustur){
+	let stringcumleler = cumlelereDonustur(cumleler, " ");
+	return cumleKur(stringcumleler[1], stringcumleler[3], stringcumleler[5], stringcumleler[7], stringcumleler[9]);
 }
-
 
 /* 	GÖREV 3:
 		Yukarıda isimleri sebzeler ve meyveler olan 2 dizi bulunmaktadır. Bu dizileri kullanarak aşağıdaki görevleri tamamlayın.
 			3a. meyveler dizisinin ilk ve son elemanlarını diziden çıkartın. (.pop ve .shift metodlarını kullanın)
  */
 //3a çözümü
-/* kodlar buraya */
 
+meyveler.pop(meyveler[meyveler.length - 1]);
 
-
-
+meyveler.shift(meyveler[meyveler.length - 1]);
 
  
-/* 			3b.  Bir tavşan ve bir kirpi arkadaşlar sebzeler dizimizin peşine düştü. Tavşan => 🐇 , Kirpi=> 🦔 , Tavşanla kirpi sebzeleri ele geçirmek için bir plan kurdular. Tavşan diziye önden saldıracak, kirpi ise arkalarından dolaşacak. Varsayalım ki arkadaşların planları başarılı oldu. Tavşanı dizinin ilk elemanına 🐇, Kirpiyi dizinin son elemanına ekleyin 🦔 
+/* 			3b.  Bir tavşan ve bir kirpi arkadaşlar sebzeler dizimizin peşine düştü.
+Tavşan => 🐇 , Kirpi=> 🦔 , Tavşanla kirpi sebzeleri ele geçirmek için bir plan kurdular.
+Tavşan diziye önden saldıracak, kirpi ise arkalarından dolaşacak. Varsayalım ki arkadaşların
+planları başarılı oldu. Tavşanı dizinin ilk elemanına 🐇, Kirpiyi dizinin son elemanına ekleyin 🦔 
 */
+
 //3b çözümü
 /* kodlar buraya */
 
+sebzeler.push('🦔');
 
-
-
-
-
+sebzeler.unshift('🐇');
 
 
 /* 			3c. manav isminde bir dizi oluşturun.`meyveler` dizisi ilk elemanlara, `sebzeler` dizisi son elemanlara denk gelecek şekilde, iki diziyi birleştirip sonucu manav dizisine aktarın. (.concat metodu)
 	*/
 	//3c çözümü
-/* kodlar buraya */
-
-var manav;
 
 
+var manav = [];
 
+for (let i = 0; i < meyveler.length; i++) {
+	manav.push(meyveler[i]);
+}
 
-
-/* 	GÖREV 4:
-		Yeni kurulmuş bir mesajlaşma startup firması atılan mesajları emojilerle zenginleştirmek istiyor. Bunun için emojiler adında bir nesne tanımlamışlar. Kullanıcının gönderdiği mesaj stringi içinde emojiler nesnesinin anahtarı(index) bulunuyorsa, bu işareti otomatik olarak anahtara ait değerde tanımlanmış emoji ile değiştirecek bir fonksiyon geliştirmek istiyorlar. ÖRNEK: Mesaj içinde ":)" sembolü bulunursa mesajı alan kişi bu sembolü "🙂" olarak görecek. Burdan yola çıkarak emojileriDonustur fonksiyonuna aşağıdakileri uygulayın.
-			1. Atılan mesaj stringi fonksiyonun birinci parametresi olarak alınacak
-			2. emojiler nesnesi fonksiyonun ikinci parametresi olarak alınacak
-			3. mesaj stringi emoji nesnesinde tanımlı olan tüm sembolleri istenilen değere dönüştürecek (.replaceAll metodu kullanılacak)
-				NOT: burada dikkat edilmesi gereken husus şudur; harfli sembolleri kullanıcı küçük harf ve büyük harf olarak girebilir. 
-				yani hem :d hem de :D sembolleri 😁'a dönüşmelidir. bunun için (.toUpperCase ve .toLowerCase metotlarından istediğinizi kullanabilirsiniz.)
-			4. elde edilen string döndürülecek
- */
-
-function emojileriDonustur(/* kodlar buraya */){
-/* kodlar buraya */
-
+for (let i = 0; i < sebzeler.length; i++) {
+	manav.push(sebzeler[i]);
 }
 
 
+/* 	GÖREV 4:
+		Yeni kurulmuş bir mesajlaşma startup firması atılan mesajları emojilerle zenginleştirmek istiyor.
+		Bunun için emojiler adında bir nesne tanımlamışlar. Kullanıcının gönderdiği mesaj stringi içinde
+		emojiler nesnesinin anahtarı(index) bulunuyorsa, bu işareti otomatik olarak anahtara ait değerde
+		tanımlanmış emoji ile değiştirecek bir fonksiyon geliştirmek istiyorlar. ÖRNEK: Mesaj içinde ":)" sembolü
+		bulunursa mesajı alan kişi bu sembolü "🙂" olarak görecek. Burdan yola çıkarak emojileriDonustur fonksiyonuna
+		aşağıdakileri uygulayın.
+			1. Atılan mesaj stringi fonksiyonun birinci parametresi olarak alınacak
+			2. emojiler nesnesi fonksiyonun ikinci parametresi olarak alınacak
+			3. mesaj stringi emoji nesnesinde tanımlı olan tüm sembolleri istenilen değere dönüştürecek
+			(.replaceAll metodu kullanılacak)
+				NOT: burada dikkat edilmesi gereken husus şudur; harfli sembolleri kullanıcı küçük harf ve büyük harf
+				olarak girebilir. 
+				yani hem :d hem de :D sembolleri 😁'a dönüşmelidir. bunun için (.toUpperCase ve .toLowerCase
+					metotlarından istediğinizi kullanabilirsiniz.)
+			4. elde edilen string döndürülecek
+ */
+
+
+/*for (let i = 0; i < keys.length; i++) {
+	emojiler.keys[i].toUpperCase() = values[i];
+}*/
+
+
+
+
+let keys = Object.keys(emojiler);
+let values = Object.values(emojiler);
+
+function emojileriCogalt (emojiler) {
+  
+	for (let i = 0; i < keys.length; i++) {
+		if (keys[i] !== keys[i].toUpperCase()) {
+		emojiler[keys[i].toUpperCase()]= values[i];
+		}
+	}
+	return emojiler;
+} 
+
+let emojiler2 = emojileriCogalt (emojiler);
+let keys2 = Object.keys(emojiler2);
+let values2 = Object.values(emojiler2);
+
+function emojileriDonustur (mesaj, emojiler2) {
+  for (let i = 0; i < keys2.length; i++) {
+    let yenimesaj = mesaj.replaceAll(keys2[i], values2[i]);
+    mesaj = yenimesaj;
+  }
+  return mesaj;
+} 
+
+			  
 
 /*  Bu satırın aşağısındaki kodları lütfen değiştirmeyin  */
 function sa(){
